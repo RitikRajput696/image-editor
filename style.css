@@ -85,9 +85,23 @@ body {
     justify-content: space-between;
 }
 
+.img-preview {
+    flex-grow: 1;
+    display: flex;
+    overflow: hidden;
+    /* margin-left: 20px; */
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+
+}
+
 .img-preview img {
+    max-width: 490px;
+    max-height: 335px;
+    width: 100%;
     height: 100%;
-    width: auto;
+    object-fit: contain
 }
 
 footer {
