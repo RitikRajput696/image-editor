@@ -12,6 +12,8 @@ let saturation = 100;
 let inversion = 0;
 let grayscale = 0;
 let rotate = 0;
+let flipHorizontal = 1;
+let flipVertical = 1;
 
 function applyFilters() {
   previewImg.style.filter = `
@@ -20,7 +22,7 @@ function applyFilters() {
   invert(${inversion}%) 
   grayscale(${grayscale}%)`;
 
-  previewImg.style.transform = `rotate(${rotate}deg)`;
+  previewImg.style.transform = `rotate(${rotate}deg) scale(${flipHorizontal}, ${flipVertical})`;
 }
 
 function loadImg() {
@@ -76,16 +78,20 @@ function updateFilter() {
     grayscale = filterSlider.value;
   }
   applyFilters();
-  console.log(filterSlider.value);
+  // console.log(filterSlider.value);
 }
 
 rotateOptions.forEach((option) =>
   option.addEventListener('click', () => {
-    console.log(option);
-    if ((option.id = 'rotate-left')) {
+    // console.log(option);
+    if (option.id === 'rotate-left') {
       rotate -= 90;
-    } else if ((option.id = 'rotate-right')) {
+    } else if (option.id === 'rotate-right') {
       rotate += 90;
+    } else if (option.id === 'flip-horizontal') {
+      flipHorizontal = flipHorizontal === 1 ? -1 : 1;
+    } else {
+      flipVertical = flipVertical === 1 ? -1 : 1;
     }
 
     applyFilters();
