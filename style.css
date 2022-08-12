@@ -37,7 +37,7 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 900px;
     width: 100%;
     background-color: var(--primary-white);
     padding: 1rem;
@@ -51,6 +51,11 @@ body {
 
 .container h2 {
     margin-bottom: 1rem;
+}
+
+.container.disable :where(.editor, .reset, .download-img) {
+    opacity: 0.5;
+    pointer-events: none;
 }
 
 .wrapper {
