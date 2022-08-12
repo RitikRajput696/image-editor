@@ -10,6 +10,9 @@ let brightness = 100;
 let saturation = 100;
 let inversion = 0;
 let grayscale = 0;
+function applyFilters() {
+  previewImg.style.filter = `brightness(${brightness}) saturate(${saturation}) invert(${inversion}) grayscale(${grayscale})`;
+}
 
 function loadImg() {
   //getting user selected files
@@ -28,11 +31,42 @@ filters.forEach((option) => {
       .classList.remove('active');
     option.classList.add('active');
     filterName.innerText = option.innerText;
-    console.log(option);
+
+    // set new updated filter values and remember them
+    if (option.id === 'brightness') {
+      filterSlider.max = 200;
+      filterSlider.value = brightness;
+      filterValue.innerText = brightness + '%';
+    } else if (option.id === 'saturation') {
+      filterSlider.max = 200;
+      filterSlider.value = saturation;
+      filterValue.innerText = saturation + '%';
+    } else if (option.id === 'inversion') {
+      filterSlider.max = 100;
+      filterSlider.value = inversion;
+      filterValue.innerText = inversion + '%';
+    } else {
+      filterSlider.max = 100;
+      filterSlider.value = grayscale;
+      filterValue.innerText = grayscale + '%';
+    }
   });
 });
+
+// update filter values
 function updateFilter() {
   filterValue.innerText = filterSlider.value + '%';
+  const selectedFilter = document.querySelector('.editing-buttons .active');
+  if (selectedFilter.id === 'brightness') {
+    brightness = filterSlider.value;
+  } else if (selectedFilter.id === 'saturation') {
+    saturation = filterSlider.value;
+  } else if (selectedFilter.id === 'inversion') {
+    inversion = filterSlider.value;
+  } else {
+    grayscale = filterSlider.value;
+  }
+  applyFilters();
 }
 //execute these lines at the end
 chooseImg.addEventListener('click', () => fileInput.click());
