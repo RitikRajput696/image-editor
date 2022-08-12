@@ -6,6 +6,7 @@ const filterName = document.querySelector('.filter-info .name');
 const filterValue = document.querySelector('.filter-info .value');
 const filterSlider = document.querySelector('.slider input');
 const rotateOptions = document.querySelectorAll('.rotate-buttons button');
+const resetFiltersBtn = document.querySelector('.reset button');
 
 let brightness = 100;
 let saturation = 100;
@@ -14,6 +15,19 @@ let grayscale = 0;
 let rotate = 0;
 let flipHorizontal = 1;
 let flipVertical = 1;
+
+resetFiltersBtn.addEventListener('click', () => {
+  console.log(resetFiltersBtn);
+  brightness = 100;
+  saturation = 100;
+  inversion = 0;
+  grayscale = 0;
+  rotate = 0;
+  flipHorizontal = 1;
+  flipVertical = 1;
+
+  applyFilters();
+});
 
 function applyFilters() {
   previewImg.style.filter = `
