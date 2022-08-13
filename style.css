@@ -132,9 +132,6 @@ footer {
 }
 
 @media only screen and (max-width:870px) {
-    body {
-        background-color: red;
-    }
 
     .wrapper {
         flex-direction: column;
